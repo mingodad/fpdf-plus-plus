@@ -2645,7 +2645,8 @@ protected:
 
     void _out(const char *s, bool nl=true)
     {
-        _out(s, strlen(s), nl);
+        if(s != NULL)
+            _out(s, strlen(s), nl);
     }
 
     void _out(const std::string &s, bool nl=true)
