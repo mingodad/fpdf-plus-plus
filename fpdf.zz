@@ -916,7 +916,7 @@ public:
             _str_tolower(style);
         }
 
-        int found = style.find("u");
+        std::size_t found = style.find("u");
         if(found != std::string::npos )
         {
             m_underline = true;
@@ -1288,7 +1288,7 @@ public:
         font_width_t *cw = m_CurrentFont->font.cw;
         if(w==0) w = m_w-m_rMargin-m_x;
         pdf_float_t wmax = (w-2*m_cMargin)*1000.0/m_FontSize;
-        std::string stmp, s = txt ? txt : "";
+        std::string s = txt ? txt : "";
         _erasestrch(s, '\r');
         int nb = s.size();
         if(nb>0 && s[nb-1]=='\n') --nb;
@@ -1852,7 +1852,7 @@ protected:
         {
             size_t size = str.size();
             //int used intentionally for the case of 0nt char should be erased
-            for(int i=0; i<size; ++i)
+            for(size_t i=0; i<size; ++i)
             {
                 if(str.at(i) == c)
                 {
@@ -2184,7 +2184,7 @@ protected:
 
         // Extract info from a JPEG file
         unsigned int   marker = M_PSEUDO;
-        unsigned short length, ffRead = 1;
+        unsigned short ffRead = 1;
         unsigned char  bits     = 0;
         unsigned short height   = 0;
         unsigned short width    = 0;
@@ -2645,7 +2645,8 @@ protected:
 
     void _out(const char *s, bool nl=true)
     {
-        _out(s, strlen(s), nl);
+        if(s != NULL)
+            _out(s, strlen(s), nl);
     }
 
     void _out(const std::string &s, bool nl=true)
