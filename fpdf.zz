@@ -1288,7 +1288,7 @@ public:
         font_width_t *cw = m_CurrentFont->font.cw;
         if(w==0) w = m_w-m_rMargin-m_x;
         pdf_float_t wmax = (w-2*m_cMargin)*1000.0/m_FontSize;
-        std::string stmp, s = txt ? txt : "";
+        std::string s = txt ? txt : "";
         _erasestrch(s, '\r');
         int nb = s.size();
         if(nb>0 && s[nb-1]=='\n') --nb;
@@ -2184,7 +2184,7 @@ protected:
 
         // Extract info from a JPEG file
         unsigned int   marker = M_PSEUDO;
-        unsigned short length, ffRead = 1;
+        unsigned short ffRead = 1;
         unsigned char  bits     = 0;
         unsigned short height   = 0;
         unsigned short width    = 0;
